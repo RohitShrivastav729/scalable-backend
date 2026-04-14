@@ -22,6 +22,8 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             cd ~/scalable-backend
+            git pull origin main
+            chmod +x deploy.sh
             ./deploy.sh
 
       - name: Deploy to EC2-2
@@ -32,4 +34,6 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             cd ~/scalable-backend
+            git pull origin main
+            chmod +x deploy.sh
             ./deploy.sh
