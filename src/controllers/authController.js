@@ -5,7 +5,7 @@ const userService = require("../services/userService");
 const redisClient = require("../configs/redisClient");
 
 
-const SECRET = "mysecret"; // later env
+const SECRET = "mysecret"; // later env 
 
 const signup = async (req, res) => {
     const { email, password } = req.body;
