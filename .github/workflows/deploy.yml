@@ -1,0 +1,35 @@
+
+name: Deploy to EC2 Servers
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy to EC2-1
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST_1 }}
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd ~/scalable-backend
+            ./deploy.sh
+
+      - name: Deploy to EC2-2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST_2 }}
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd ~/scalable-backend
+            ./deploy.sh
