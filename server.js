@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send("Scalable Backend Running..");
+    res.status(200).send("Scalable Backend Running..");
 });
 
 const authRoutes = require("./src/routes/authRoutes");
